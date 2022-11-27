@@ -1,0 +1,11 @@
+"","Macro_averaged_metrics"
+"Specificity",0.975278622087133
+"Pos.Pred.Value",0.843877551020408
+"Neg.Pred.Value",0.975397346066747
+"Precision",0.843877551020408
+"Recall",0.840136054421769
+"F1",0.839060939060939
+"Prevalence",0.142857142857143
+"Detection.Rate",0.121693121693122
+"Detection.Prevalence",0.142857142857143
+"Balanced.Accuracy",0.907707338254451
