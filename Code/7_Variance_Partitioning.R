@@ -1,6 +1,4 @@
 
-
-```r
 rm(list = ls())
 
 options(scipen=999)
@@ -9,67 +7,9 @@ packages <- list("tidyverse","ggplot2","here","lme4","svglite")
 
 
 lapply(packages, require,character.only=T)
-```
 
-```
-## Loading required package: lme4
-```
-
-```
-## Loading required package: Matrix
-```
-
-```
-## 
-## Attaching package: 'Matrix'
-```
-
-```
-## The following objects are masked from 'package:tidyr':
-## 
-##     expand, pack, unpack
-```
-
-```
-## Loading required package: svglite
-```
-
-```
-## [[1]]
-## [1] TRUE
-## 
-## [[2]]
-## [1] TRUE
-## 
-## [[3]]
-## [1] TRUE
-## 
-## [[4]]
-## [1] TRUE
-## 
-## [[5]]
-## [1] TRUE
-```
-
-```r
 Sunflower_train <- read_csv(here("Datasets and Tables","Sunflower_train.csv"))
-```
 
-```
-## Rows: 513 Columns: 73
-```
-
-```
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────────
-## Delimiter: ","
-## chr  (2): Pop, Species
-## dbl (71): SPAD, L_Aarea, L_Amass, L_Con, L_Ci, L_iWUE, L_NightRespArea, L_NightRespmass, LA, L_Peri, L_Circ, LS, LMA, L_FreshM...
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-```r
 ### converting the population and the species column to factor 
 
 Sunflower_train <- Sunflower_train %>%
@@ -107,17 +47,7 @@ mixed_model <- function(x){
 
 Variance_Species_pop <- Sunflower_train[,-c(1:3)] %>% 
                         map(mixed_model)
-```
 
-```
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-```
-
-```r
 ### converting this list into a dataframe
 
 Variance_Species_pop <- data.frame(Variances = 
@@ -146,28 +76,37 @@ ggplot(Variance_table_1, aes(fill=Levels, y=Variance, x=Traits)) +
   labs(x = "Traits", y = "Estimated relative Variance (%)") +
   ggtitle("Estimated relative variation in percent at the genus level") +
   theme(axis.text.x = element_text(size = 10,angle = 90,vjust = 0.5,hjust = 1)) 
-```
+  
+ 
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png)
-
-```r
 here("Figures")
-```
 
-```
-## [1] "C:/Users/samba/Documents/Chapter_1_Analysis/Figures"
-```
-
-```r
 ggsave("C:/Users/samba/Documents/Chapter_1_Analysis/Figures/Figure S2.svg",
        dpi=300)
-```
 
-```
-## Saving 7 x 7 in image
-```
 
-```r
+
+Variance_table_1 <- Variance_table_1 %>% pivot_wider(names_from = Levels,
+                                                     values_from = Variance)
+
+
+
+## Arranging the Species variance values in a descending order ##
+
+Variance_table_1 <- Variance_table_1 %>% arrange(desc(Species))
+
+
+here("Dataset and Tables")
+
+### exporting the dataframe containing the variance partitioning values at the genus level
+
+write.csv(Variance_table_1,
+          "C:/Users/samba/Documents/Chapter_1_Analysis/Datasets and Tables/Variance_partitioning_Genus.csv",
+          row.names = FALSE)
+
+
+
+
 #################### 
 ####### Exploring variance partitioning values at the clade level ###
 ###############
@@ -198,19 +137,7 @@ Pop <- Perennial_Sunflowers$Pop
 
 Variance_Species_pop_Perennials <- Perennial_Sunflowers[,-c(1:3)] %>% 
                         map(mixed_model)
-```
 
-```
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-```
-
-```r
 ### converting this list into a dataframe
 
 Variance_Species_pop_Perennials <- data.frame(Variances = 
@@ -241,28 +168,37 @@ ggplot(Variance_table_2, aes(fill=Levels, y=Variance, x=Traits)) +
   labs(x = "Traits", y = "Estimated relative Variance (%)") +
   ggtitle("Estimated relative variation in percent at the Perennial level") +
   theme(axis.text.x = element_text(size = 10,angle = 90,vjust = 0.5,hjust = 1)) 
-```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-2.png)
 
-```r
+
 here("Figures")
-```
 
-```
-## [1] "C:/Users/samba/Documents/Chapter_1_Analysis/Figures"
-```
-
-```r
 ggsave("C:/Users/samba/Documents/Chapter_1_Analysis/Figures/Figure S3.svg",
        dpi=300)
-```
 
-```
-## Saving 7 x 7 in image
-```
 
-```r
+
+Variance_table_2 <- Variance_table_2 %>% pivot_wider(names_from = Levels,
+                                                     values_from = Variance)
+
+
+
+## Arranging the Species variance values in a descending order ##
+
+Variance_table_2 <- Variance_table_2 %>% arrange(desc(Species))
+
+
+here("Dataset and Tables")
+
+### exporting the dataframe containing the variance partitioning values at the genus level
+
+write.csv(Variance_table_2,
+          "C:/Users/samba/Documents/Chapter_1_Analysis/Datasets and Tables/Variance_partitioning_perennial.csv",
+          row.names = FALSE)
+
+
+
+
 #### ANNUAL ####
 
 ### Annual species names  ###
@@ -291,38 +227,7 @@ Pop <- Annual_Sunflowers$Pop
 
 Variance_Species_pop_Annuals <- Annual_Sunflowers[,-c(1:3)] %>% 
                                 map(mixed_model)
-```
 
-```
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-```
-
-```
-## Warning in checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv, : Model failed to converge with max|grad| =
-## 0.00289434 (tol = 0.002, component 1)
-```
-
-```
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-```
-
-```
-## Warning in checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv, : Model failed to converge with max|grad| = 0.0045198
-## (tol = 0.002, component 1)
-```
-
-```
-## boundary (singular) fit: see help('isSingular')
-```
-
-```r
 ### converting this list into a dataframe
 
 Variance_Species_pop_Annuuals <- data.frame(Variances = 
@@ -352,28 +257,37 @@ ggplot(Variance_table_3, aes(fill=Levels, y=Variance, x=Traits)) +
   labs(x = "Traits", y = "Estimated relative Variance (%)") +
   ggtitle("Estimated relative variation in percent at the Annual level") +
   theme(axis.text.x = element_text(size = 10,angle = 90,vjust = 0.5,hjust = 1)) 
-```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-3.png)
 
-```r
+
 here("Figures")
-```
 
-```
-## [1] "C:/Users/samba/Documents/Chapter_1_Analysis/Figures"
-```
-
-```r
 ggsave("C:/Users/samba/Documents/Chapter_1_Analysis/Figures/Figure S4.svg",
        dpi=300)
-```
 
-```
-## Saving 7 x 7 in image
-```
 
-```r
+
+Variance_table_3 <- Variance_table_3 %>% pivot_wider(names_from = Levels,
+                                                     values_from = Variance)
+
+
+
+## Arranging the Species variance values in a descending order ##
+
+Variance_table_3 <- Variance_table_3 %>% arrange(desc(Species))
+
+
+here("Dataset and Tables")
+
+### exporting the dataframe containing the variance partitioning values at the genus level
+
+write.csv(Variance_table_3,
+          "C:/Users/samba/Documents/Chapter_1_Analysis/Datasets and Tables/Variance_partitioning_Annual.csv",
+          row.names = FALSE)
+
+
+
+
 ####### SOUTHEASTERN PERENNIAL ###
 
 ### Southeastern perennial species names ### 
@@ -400,33 +314,12 @@ Pop <- Southeastern_perennial_sunflowers$Pop
 
 Variance_Species_pop_southeastern_perennials <- Southeastern_perennial_sunflowers[,-c(1:3)] %>% 
                                                 map(mixed_model)
-```
 
-```
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-## boundary (singular) fit: see help('isSingular')
-```
-
-```r
 ### converting this list into a dataframe
 
 Variance_Species_pop_southeastern_perennials <- data.frame(Variances = 
                                               do.call(rbind,
-                                                      Variance_Species_pop_Annuals))
+                                                      Variance_Species_pop_southeastern_perennials))
 
 
 #### extracting all the trait names in this dataset ##
@@ -451,24 +344,35 @@ ggplot(Variance_table_4, aes(fill=Levels, y=Variance, x=Traits)) +
   labs(x = "Traits", y = "Estimated relative Variance (%)") +
   ggtitle("Estimated relative variation in percent at the southeastern perennial level") +
   theme(axis.text.x = element_text(size = 10,angle = 90,vjust = 0.5,hjust = 1)) 
-```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-4.png)
 
-```r
+
 here("Figures")
-```
 
-```
-## [1] "C:/Users/samba/Documents/Chapter_1_Analysis/Figures"
-```
-
-```r
 ggsave("C:/Users/samba/Documents/Chapter_1_Analysis/Figures/Figure S5.svg",
        dpi=300)
-```
 
-```
-## Saving 7 x 7 in image
-```
+
+
+Variance_table_4 <- Variance_table_4 %>% pivot_wider(names_from = Levels,
+                                                     values_from = Variance)
+
+
+
+## Arranging the Species variance values in a descending order ##
+
+Variance_table_4 <- Variance_table_4 %>% arrange(desc(Species))
+
+
+here("Dataset and Tables")
+
+### exporting the dataframe containing the variance partitioning values at the genus level
+
+write.csv(Variance_table_4,
+          "C:/Users/samba/Documents/Chapter_1_Analysis/Datasets and Tables/Variance_partitioning_southeastern_perennials.csv",
+          row.names = FALSE)
+
+
+
+
 
