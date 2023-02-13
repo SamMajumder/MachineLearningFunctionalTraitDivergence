@@ -57,7 +57,11 @@ percentage_missing <- (missing_cells * 100 )/(total_cells)
 
 percentage_missing 
 
-#### Missing values in the data
+#### Missing values in the data 
+## #### Missing values in the data
+## credit for this workflow goes to James Laufer's blog ## 
+## https://jenslaufer.com/data/analysis/visualize_missing_values_with_ggplot.html#:~:text=You%20can%20use%20the%20gather,where%20the%20value%20is%20missing.
+
 
 Missing_values <-Sunflower_traits %>%
                  gather(key = "key", value = "val") %>%
