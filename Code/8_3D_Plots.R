@@ -13,7 +13,8 @@ lapply(packages, require,character.only=T)
 train_imputed <- read_csv(here("Datasets and Tables","train_imputed.csv"))
 
 
-Imp_features <- read.csv("C:/Users/samba/Documents/Chapter_1_Analysis/Datasets and Tables/Boruta_Genus.csv")
+Imp_features <- read.csv(here("Datasets and Tables",
+                              "Boruta_Genus.csv"))
 
 ### only keeping the strongly divergent traits 
 train_boruta <- train_imputed %>% 
@@ -25,7 +26,7 @@ train_boruta <- train_imputed %>%
 plot <- plot_ly(train_boruta,x= ~L_Circ,y= ~LA,z= ~WPSMF, color = ~Species
 ) %>%
   add_markers() %>%
-  layout(
+  layout(title = "Divergent traits at the Genus Level",
     scene = list(xaxis = list(title = 'Leaf Circularity'),
                  yaxis = list(title = 'Leaf Area'),
                  zaxis = list(title = 'Whole Plant Stem Mass Fraction'))
@@ -36,9 +37,13 @@ plot
 
 saveWidget(plot,"Genus3d.html")
 
+saveRDS(plot,"Genus_3d.RDS")
+
+
 ##### 3D PLOTS ### ANNUALS ###
 
-Imp_features_Annuals <- read.csv("C:/Users/samba/Documents/Chapter_1_Analysis/Datasets and Tables/Boruta_Annual.csv") 
+Imp_features_Annuals <- read.csv(here("Datasets and Tables",
+                                "Boruta_Annual.csv")) 
 
 
 ###### FILTER OUT BY ANNUAL SPECIES ##### 
@@ -61,7 +66,7 @@ train_boruta_Annuals <- train_imputed_annuals %>%
 plot_annuals <- plot_ly(train_boruta_Annuals,x= ~WPTB,y= ~L_NightRespArea,z= ~L_LaminaT, color = ~Species
 ) %>%
   add_markers() %>%
-  layout(
+  layout(title = "Divergent traits at the Annual Level",
     scene = list(xaxis = list(title = 'Whole Plant Total Biomass'),
                  yaxis = list(title = 'Leaf Night Respiration Area'),
                  zaxis = list(title = 'Leaf Lamina Thickness'))
@@ -74,10 +79,13 @@ plot_annuals
 saveWidget(plot_annuals,"Annual3d.html")
 
 
+saveRDS(plot_annuals,"Annual_3d.RDS")
+
 ####### 3D PLOTs #### LARGE PERENNIALS
 ###### #############
 
-Imp_features_Perennials <- read.csv("C:/Users/samba/Documents/Chapter_1_Analysis/Datasets and Tables/Boruta_Perennials.csv") 
+Imp_features_Perennials <- read.csv(here("Datasets and Tables",
+                                    "Boruta_Perennials.csv")) 
 
 ###### Only keep the perennial species ##### 
 
@@ -98,7 +106,7 @@ train_boruta_Perennials <- train_imputed_perennials %>%
 plot_perennials <- plot_ly(train_boruta_Perennials,x= ~LD13C,y= ~L_Circ,z= ~LA, color = ~Species
 ) %>%
   add_markers() %>%
-  layout(
+  layout(title = "Divergent traits at the Perennial Level",
     scene = list(xaxis = list(title = 'LD13C'),
                  yaxis = list(title = 'Leaf Circularity'),
                  zaxis = list(title = 'Leaf Area'))
@@ -108,12 +116,14 @@ plot_perennials
 
 saveWidget(plot_perennials,"Perennials3d.html") 
 
+saveRDS(plot_perennials,"Perennials_3d.RDS")
 
 ############
 ### 3D PLOTS ## SOUTHEASTERN PERENNIALS ###
 ###### 
 
-Imp_features_southeastern <- read.csv("C:/Users/samba/Documents/Chapter_1_Analysis/Datasets and Tables/Boruta_southeastern_perennials.csv")
+Imp_features_southeastern <- read.csv(here("Datasets and Tables",
+                                      "Boruta_southeastern_perennials.csv"))
 
 ###### FILTER OUT BY SOUTHEASTERN PERENNUIALS SPECIES ##### 
 
@@ -135,7 +145,7 @@ train_boruta_southeastern <- train_imputed_southeastern %>%
 plot_southeastern <- plot_ly(train_boruta_southeastern,x= ~L_Circ,y= ~LA,z= ~LC, color = ~Species
 ) %>%
   add_markers() %>%
-  layout(
+  layout(title = "Divergent traits at the Southeastern perennial Level",
     scene = list(xaxis = list(title = 'Leaf Circularity'),
                  yaxis = list(title = 'Leaf Area'),
                  zaxis = list(title = 'Leaf Conductivity'))
@@ -146,6 +156,7 @@ plot_southeastern
 
 saveWidget(plot_southeastern,"Southeastern3d.html") 
 
+saveRDS(plot_southeastern,"Southeastern_3d.RDS")
 
 
 

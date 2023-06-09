@@ -87,7 +87,7 @@ ggplot(data = Gini_Genus,
                                "#FFD92F"),
                     name= 'Trait type') +
   labs(x= "Traits",
-       y= "Variable Importance(Mean Decrease of Gini Impurity)") +
+       y= "Variable Importance (Mean Decrease of Gini Impurity)") +
   coord_flip() + 
   theme_bw() + theme(legend.position = c(0.78, 0.15),
                      legend.background = element_rect(fill = "white", 
@@ -122,7 +122,7 @@ ggplot(data = Gini_Perennial,
                                "#FFD92F"),
                     name= 'Trait type') +
   labs(x= "Traits",
-       y= "Variable Importance(Mean Decrease of Gini Impurity)") +
+       y= "Variable Importance (Mean Decrease of Gini Impurity)") +
   coord_flip() + 
   theme_bw() + theme(legend.position = c(0.78, 0.15),
                      legend.background = element_rect(fill = "white", 
@@ -157,7 +157,7 @@ ggplot(data = Gini_Annual,
                                "#FFD92F"),
                     name= 'Trait type') +
   labs(x= "Traits",
-       y= "Variable Importance(Mean Decrease of Gini Impurity)") +
+       y= "Variable Importance (Mean Decrease of Gini Impurity)") +
   coord_flip() + 
   theme_bw() + theme(legend.position = c(0.78, 0.15),
                      legend.background = element_rect(fill = "white", 
@@ -192,7 +192,7 @@ ggplot(data = Gini_southeastern_perennial,
                                "#FFD92F"),
                     name= 'Trait type') +
   labs(x= "Traits",
-       y= "Variable Importance(Mean Decrease of Gini Impurity)") +
+       y= "Variable Importance (Mean Decrease of Gini Impurity)") +
   coord_flip() + 
   theme_bw() + theme(legend.position = c(0.78, 0.15),
                      legend.background = element_rect(fill = "white", 
@@ -290,7 +290,7 @@ ggplot(data = RFE_Genus,
                                "#FFD92F"),
                     name= 'Trait type') +
   labs(x= "Traits",
-       y= "Variable Importance(Mean Decrease of Gini Impurity)") +
+       y= "Variable Importance (Mean Decrease of Gini Impurity)") +
   coord_flip() + 
   theme_bw() + theme(legend.position = c(0.78, 0.15),
                      legend.background = element_rect(fill = "white", 
@@ -325,7 +325,7 @@ ggplot(data = RFE_Perennial,
                                "#FFD92F"),
                     name= 'Trait type') +
   labs(x= "Traits",
-       y= "Variable Importance(Mean Decrease of Gini Impurity)") +
+       y= "Variable Importance (Mean Decrease of Gini Impurity)") +
   coord_flip() + 
   theme_bw() + theme(legend.position = c(0.78, 0.15),
                      legend.background = element_rect(fill = "white", 
@@ -360,7 +360,7 @@ ggplot(data = RFE_Annual,
                                "#FFD92F"),
                     name= 'Trait type') +
   labs(x= "Traits",
-       y= "Variable Importance(Mean Decrease of Gini Impurity)") +
+       y= "Variable Importance (Mean Decrease of Gini Impurity)") +
   coord_flip() + 
   theme_bw() + theme(legend.position = c(0.78, 0.15),
                      legend.background = element_rect(fill = "white", 
@@ -395,7 +395,7 @@ ggplot(data = RFE_southeastern_perennial,
                                "#FFD92F"),
                     name= 'Trait type') +
   labs(x= "Traits",
-       y= "Variable Importance(Mean Decrease of Gini Impurity)") +
+       y= "Variable Importance (Mean Decrease of Gini Impurity)") +
   coord_flip() + 
   theme_bw() + theme(legend.position = c(0.78, 0.15),
                      legend.background = element_rect(fill = "white", 
@@ -502,7 +502,7 @@ ggplot(data = Boruta_Genus,
                                "#FFD92F"),
                     name= 'Trait type') +
   labs(x= "Traits",
-       y= "Variable Importance(Mean Decrease of Gini Impurity)") +
+       y= "Variable Importance (Mean Decrease of Gini Impurity)") +
   coord_flip() + 
   theme_bw() + theme(legend.position = c(0.78, 0.15),
                      legend.background = element_rect(fill = "white", 
@@ -537,7 +537,7 @@ ggplot(data = Boruta_Perennial,
                                "#FFD92F"),
                     name= 'Trait type') +
   labs(x= "Traits",
-       y= "Variable Importance(Mean Decrease of Gini Impurity)") +
+       y= "Variable Importance (Mean Decrease of Gini Impurity)") +
   coord_flip() + 
   theme_bw() + theme(legend.position = c(0.78, 0.15),
                      legend.background = element_rect(fill = "white", 
@@ -572,7 +572,7 @@ ggplot(data = Boruta_Annual,
                                "#FFD92F"),
                     name= 'Trait type') +
   labs(x= "Traits",
-       y= "Variable Importance(Mean Decrease of Gini Impurity)") +
+       y= "Variable Importance (Mean Decrease of Gini Impurity)") +
   coord_flip() + 
   theme_bw() + theme(legend.position = c(0.78, 0.15),
                      legend.background = element_rect(fill = "white", 
@@ -607,7 +607,7 @@ ggplot(data = Boruta_southeastern_perennial,
                                "#FFD92F"),
                     name= 'Trait type') +
   labs(x= "Traits",
-       y= "Variable Importance(Mean Decrease of Gini Impurity)") +
+       y= "Variable Importance (Mean Decrease of Gini Impurity)") +
   coord_flip() + 
   theme_bw() + theme(legend.position = c(0.78, 0.15),
                      legend.background = element_rect(fill = "white", 
