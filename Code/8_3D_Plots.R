@@ -14,22 +14,22 @@ train_imputed <- read_csv(here("Datasets and Tables","train_imputed.csv"))
 
 
 Imp_features <- read.csv(here("Datasets and Tables",
-                              "Boruta_Genus.csv"))
+                              "Rfe_Genus_best_subset.csv"))
 
 ### only keeping the strongly divergent traits 
-train_boruta <- train_imputed %>% 
-  dplyr::select(Species,Imp_features$Feature)
+train_rfe <- train_imputed %>% 
+                      dplyr::select(Species,Imp_features$Features)
 
 
 ### 3D PLOTLY PLOTS ###
 
-plot <- plot_ly(train_boruta,x= ~L_Circ,y= ~LA,z= ~WPSMF, color = ~Species
+plot <- plot_ly(train_rfe,x= ~L_Circ,y= ~LA,z= ~WPFF, color = ~Species
 ) %>%
   add_markers() %>%
   layout(title = "Divergent traits at the Genus Level",
     scene = list(xaxis = list(title = 'Leaf Circularity'),
-                 yaxis = list(title = 'Leaf Area'),
-                 zaxis = list(title = 'Whole Plant Stem Mass Fraction'))
+                 yaxis = list(title = 'Leaf Area (cm<sup>2</sup>)'),
+                 zaxis = list(title = 'Whole Plant First Flower (Julian Day)'))
 )
 
 plot
@@ -43,7 +43,7 @@ saveRDS(plot,"Genus_3d.RDS")
 ##### 3D PLOTS ### ANNUALS ###
 
 Imp_features_Annuals <- read.csv(here("Datasets and Tables",
-                                "Boruta_Annual.csv")) 
+                                "Rfe_Annual_best_subset.csv")) 
 
 
 ###### FILTER OUT BY ANNUAL SPECIES ##### 
@@ -59,17 +59,17 @@ train_imputed_annuals <- train_imputed %>% filter(Species %in% Annuals)
 
 
 ### only keeping the strongly divergent traits
-train_boruta_Annuals <- train_imputed_annuals %>% 
-  dplyr::select(Species,Imp_features_Annuals$Feature)
+train_rfe_Annuals <- train_imputed_annuals %>% 
+                        dplyr::select(Species,Imp_features_Annuals$Features)
 
 
-plot_annuals <- plot_ly(train_boruta_Annuals,x= ~WPTB,y= ~L_NightRespArea,z= ~L_LaminaT, color = ~Species
+plot_annuals <- plot_ly(train_rfe_Annuals,x= ~LTD,y= ~LA,z= ~FDFM, color = ~Species
 ) %>%
   add_markers() %>%
   layout(title = "Divergent traits at the Annual Level",
-    scene = list(xaxis = list(title = 'Whole Plant Total Biomass'),
-                 yaxis = list(title = 'Leaf Night Respiration Area'),
-                 zaxis = list(title = 'Leaf Lamina Thickness'))
+    scene = list(xaxis = list(title = 'Leaf Trichome Density'),
+                 yaxis = list(title = 'Leaf Area (cm<sup>2</sup>)'),
+                 zaxis = list(title = 'Flower disc fresh mass (g)'))
   )
 
 
@@ -123,7 +123,7 @@ saveRDS(plot_perennials,"Perennials_3d.RDS")
 ###### 
 
 Imp_features_southeastern <- read.csv(here("Datasets and Tables",
-                                      "Boruta_southeastern_perennials.csv"))
+                                      "Rfe_southeastern_best_subset.csv"))
 
 ###### FILTER OUT BY SOUTHEASTERN PERENNUIALS SPECIES ##### 
 
@@ -137,18 +137,18 @@ Southeastern_perennials <- c("H_carnosus","H_atrorubens","H_radula",
 train_imputed_southeastern <- train_imputed %>% filter(Species %in% Southeastern_perennials)
 
 ### only keeping the most strongly divergent traits 
-train_boruta_southeastern <- train_imputed_southeastern %>% 
-  dplyr::select(Species,Imp_features_southeastern$Feature)
+train_rfe_southeastern <- train_imputed_southeastern %>% 
+                                   dplyr::select(Species,Imp_features_southeastern$Features)
 
 
 
-plot_southeastern <- plot_ly(train_boruta_southeastern,x= ~L_Circ,y= ~LA,z= ~LC, color = ~Species
+plot_southeastern <- plot_ly(train_rfe_southeastern,x= ~L_Circ,y= ~LA,z= ~LDMC, color = ~Species
 ) %>%
   add_markers() %>%
   layout(title = "Divergent traits at the Southeastern perennial Level",
     scene = list(xaxis = list(title = 'Leaf Circularity'),
-                 yaxis = list(title = 'Leaf Area'),
-                 zaxis = list(title = 'Leaf Conductivity'))
+                 yaxis = list(title = 'Leaf Area cm<sup>2</sup>'),
+                 zaxis = list(title = 'LDMC (g dry mass/g fresh mass)'))
   )
 
 
