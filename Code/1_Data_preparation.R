@@ -177,10 +177,5 @@ write.csv(Sunflower_train,"C:/Users/samba/Documents/Chapter_1_Analysis/Datasets 
 
 
 
-df <- read.csv(here("Datasets and Tables", "train_imputed.csv"))
-
-table(df$Species)
-
-
 
 
