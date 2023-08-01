@@ -62,6 +62,8 @@ train_imputed_annuals <- train_imputed %>% filter(Species %in% Annuals)
 train_rfe_Annuals <- train_imputed_annuals %>% 
                         dplyr::select(Species,Imp_features_Annuals$Features)
 
+table(train_rfe_Annuals$Species)
+
 
 plot_annuals <- plot_ly(train_rfe_Annuals,x= ~LTD,y= ~LA,z= ~FDFM, color = ~Species
 ) %>%
@@ -85,7 +87,7 @@ saveRDS(plot_annuals,"Annual_3d.RDS")
 ###### #############
 
 Imp_features_Perennials <- read.csv(here("Datasets and Tables",
-                                    "Boruta_Perennials.csv")) 
+                                    "Rfe_Perennial_best_subset.csv")) 
 
 ###### Only keep the perennial species ##### 
 
@@ -101,6 +103,9 @@ train_imputed_perennials <- train_imputed %>% filter(Species %in% Perennials)
 ### only keeping the most strongly divergent traits 
 train_boruta_Perennials <- train_imputed_perennials %>% 
   dplyr::select(Species,Imp_features_Perennials$Feature)
+
+table(train_boruta_Perennials$Species)
+
 
 
 plot_perennials <- plot_ly(train_boruta_Perennials,x= ~LD13C,y= ~L_Circ,z= ~LA, color = ~Species
@@ -140,6 +145,8 @@ train_imputed_southeastern <- train_imputed %>% filter(Species %in% Southeastern
 train_rfe_southeastern <- train_imputed_southeastern %>% 
                                    dplyr::select(Species,Imp_features_southeastern$Features)
 
+
+table(train_rfe_southeastern$Species)
 
 
 plot_southeastern <- plot_ly(train_rfe_southeastern,x= ~L_Circ,y= ~LA,z= ~LDMC, color = ~Species

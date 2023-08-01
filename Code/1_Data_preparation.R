@@ -11,10 +11,13 @@ lapply(packages, require,character.only=T)
 Sunflower_traits <- read_excel(here("Datasets and Tables","CombinedTraitDataset_ForSam_12.20.20.xlsx"))
 
 
+table(Sunflower_traits$Species)
+
+
 #### removing the columns which we don't need ### 
 
 Sunflower_traits <- Sunflower_traits %>% 
-  dplyr::select(-c(Year,PlantID,Block,Number))
+                         dplyr::select(-c(Year,PlantID,Block,Number))
 
 
 ### now renaming the columns ### 
@@ -167,5 +170,17 @@ Sunflower_train <- data.frame(Pop = pop_train$Pop,
 ### write this dataframe out to analyze variance partitioning #### 
 
 write.csv(Sunflower_train,"C:/Users/samba/Documents/Chapter_1_Analysis/Datasets and Tables/Sunflower_train.csv",
-          row.names = FALSE)
+          row.names = FALSE)    
+
+
+
+
+
+
+df <- read.csv(here("Datasets and Tables", "train_imputed.csv"))
+
+table(df$Species)
+
+
+
 
