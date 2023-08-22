@@ -45,7 +45,7 @@ mixed_model <- function(x){
 ##### Applying this function on the whole dataset 
 ### the result returns a list 
 
-Variance_Species_pop <- Sunflower_train[,-c(1:3)] %>% 
+Variance_Species_pop <- Sunflower_train[,-c(1:2)] %>% 
                         map(mixed_model)
 
 ### converting this list into a dataframe
@@ -57,11 +57,11 @@ Variance_Species_pop <- data.frame(Variances =
 #### extracting all the trait names in this dataset ##
 ## and repeating each name 3 times ##
 
-Traits <- rep(colnames(Sunflower_train[-c(1:3)]),each=3)
+Traits <- rep(colnames(Sunflower_train[-c(1:2)]),each=3)
 
 ### These are the groups for which the variances were computed ###
 
-Levels <- rep(c("Population","Species","Residuals"),times=70)
+Levels <- rep(c("Population","Species","Residuals"),times=71)
 
 ### Putting the variance values, trait names and levels in one dataframe ## 
 
@@ -101,7 +101,7 @@ here("Dataset and Tables")
 ### exporting the dataframe containing the variance partitioning values at the genus level
 
 write.csv(Variance_table_1,
-          "C:/Users/samba/Documents/Chapter_1_Analysis/Datasets and Tables/Variance_partitioning_Genus.csv",
+          "C:/Users/samba/Documents/MachineLearningFunctionalTraitDivergence/Dataset and Tables/Variance_partitioning_Genus.csv",
           row.names = FALSE)
 
 
@@ -135,7 +135,7 @@ Pop <- Perennial_Sunflowers$Pop
 
 #### Calculate Variance partitioning ###
 
-Variance_Species_pop_Perennials <- Perennial_Sunflowers[,-c(1:3)] %>% 
+Variance_Species_pop_Perennials <- Perennial_Sunflowers[,-c(1:2)] %>% 
                         map(mixed_model)
 
 ### converting this list into a dataframe
@@ -149,11 +149,11 @@ Variance_Species_pop_Perennials <- data.frame(Variances =
 ## and repeating each name 3 times ## Same as Genus level 
 
 
-Traits <- rep(colnames(Sunflower_train[-c(1:3)]),each=3)
+Traits <- rep(colnames(Sunflower_train[-c(1:2)]),each=3)
 
 ### These are the groups for which the variances were computed ###
 
-Levels <- rep(c("Population","Species","Residuals"),times=70)
+Levels <- rep(c("Population","Species","Residuals"),times=71)
 
 ### Putting the variance values, trait names and levels in one dataframe ## 
 
@@ -225,7 +225,7 @@ Pop <- Annual_Sunflowers$Pop
 
 #### Calculate Variance partitioning ###
 
-Variance_Species_pop_Annuals <- Annual_Sunflowers[,-c(1:3)] %>% 
+Variance_Species_pop_Annuals <- Annual_Sunflowers[,-c(1:2)] %>% 
                                 map(mixed_model)
 
 ### converting this list into a dataframe
@@ -238,11 +238,11 @@ Variance_Species_pop_Annuuals <- data.frame(Variances =
 #### extracting all the trait names in this dataset ##
 ## and repeating each name 3 times ## Same as Genus level 
 
-Traits <- rep(colnames(Sunflower_train[-c(1:3)]),each=3)
+Traits <- rep(colnames(Sunflower_train[-c(1:2)]),each=3)
 
 ### These are the groups for which the variances were computed ###
 
-Levels <- rep(c("Population","Species","Residuals"),times=70)
+Levels <- rep(c("Population","Species","Residuals"),times=71)
 
 ### Putting the variance values, trait names and levels in one dataframe ## 
 
@@ -312,7 +312,7 @@ Pop <- Southeastern_perennial_sunflowers$Pop
 
 #### Calculate Variance partitioning ###
 
-Variance_Species_pop_southeastern_perennials <- Southeastern_perennial_sunflowers[,-c(1:3)] %>% 
+Variance_Species_pop_southeastern_perennials <- Southeastern_perennial_sunflowers[,-c(1:2)] %>% 
                                                 map(mixed_model)
 
 ### converting this list into a dataframe
@@ -325,11 +325,11 @@ Variance_Species_pop_southeastern_perennials <- data.frame(Variances =
 #### extracting all the trait names in this dataset ##
 ## and repeating each name 3 times ## Same as Genus level 
 
-Traits <- rep(colnames(Sunflower_train[-c(1:3)]),each=3)
+Traits <- rep(colnames(Sunflower_train[-c(1:2)]),each=3)
 
 ### These are the groups for which the variances were computed ###
 
-Levels <- rep(c("Population","Species","Residuals"),times=70)
+Levels <- rep(c("Population","Species","Residuals"),times=71)
 
 ### Putting the variance values, trait names and levels in one dataframe ## 
 
