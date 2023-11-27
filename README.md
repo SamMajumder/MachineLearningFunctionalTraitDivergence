@@ -64,7 +64,7 @@ This repository contains datasets, code, and tables used in the analysis of func
 
 - **Trait Importance for Species Classification:** The study identified key traits for accurate species classification at both genus and clade levels. Important traits include leaf size, shape, trichome density, and whole plant reproductive phenology. Traits like leaf nutrient chemistry, gas exchange, and floral morphology were generally less important.
 
-- **Differences in Trait Importance Across Scales:** There were notable differences in the importance of various traits when comparing genus and clade levels. For instance, leaf lifespan was more significant at the genus level, while traits like leaf area and photosynthetic rate varied in importance across different clades.
+- **Differences in Trait Importance across phylogenetic scales:** There were notable differences in the importance of various traits when comparing genus and clade levels. For instance, leaf lifespan was more significant at the genus level, while traits like leaf area and photosynthetic rate varied in importance across different clades.
 
 - **Identification of Strongly Divergent Traits:** Using Recursive Feature Elimination (RFE), the study pinpointed a core set of ecophysiological traits that are highly divergent across species. These include leaf size, shape, trichome density, and aspects of whole plant reproductive phenology and biomass.
 
